@@ -12,6 +12,7 @@ import { OnePagerOverview } from './OnePagerOverview';
 import { OnePagerFounders } from './OnePagerFounders';
 import { OnePagerFinances } from './OnePagerFinances';
 import { OnePagerVideo } from './OnePagerVideo';
+import { OnePagerFAQ } from './OnePagerFAQ';
 
 /** Renders a full one pager based on the onePagerUrl. */
 export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
@@ -58,6 +59,10 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
         </>
       }
 
+      <Diveder50 />
+
+      <OnePagerFAQ />
+      
       <Diveder50 />
 
       <ContentCard isLoading={false}>
