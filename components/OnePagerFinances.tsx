@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading } from '@chakra-ui/core';
+import { Progress } from "@chakra-ui/core";
 
 import { OnePagerData } from '../model/model';
 import { ContentCard } from './ContentCard';
@@ -17,9 +18,14 @@ export const OnePagerFinances = ({
   // Format a number to include a dollar sign. This function
   // will be improved as part of task 2.
   const formatFinanceNumber = (financeNumber: number) => {
-    // Source: https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-    return `$${financeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    // Regex Solution Source: https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+    const num = financeNumber ? financeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
+    return `$${num}`;
   };
+
+  const calculateFundsRaised = (raised: number, goal: number) => {
+    return (raised / goal) * 100;
+  }
 
   return (
     <ContentCard title='Finances' isLoading={isLoading}>
@@ -35,6 +41,7 @@ export const OnePagerFinances = ({
       <SubHeading>
         Funding Goal: {formatFinanceNumber(onePagerData.fundraisingStageGoal)}
       </SubHeading>
+      <Progress value={calculateFundsRaised(onePagerData.fundsRaisedInStage, onePagerData.fundraisingStageGoal)} />
       
     </ContentCard>
   );
