@@ -47,7 +47,6 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
       <Diveder50 />
 
       <OnePagerFinances onePagerData={onePagerData} isLoading={isLoading} />
-
       
       {
         // Check if video link exists
