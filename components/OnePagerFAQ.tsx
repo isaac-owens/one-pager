@@ -1,9 +1,8 @@
 import React from 'react';
 import { Heading } from '@chakra-ui/core';
 
-
-import { OnePagerData } from '../model/model';
 import { ContentCard } from './ContentCard';
+import { OnePagerData, OnePagerQuestion } from '../model/model';
 import Head from 'next/head';
 
 type OnePagerFAQProps = {
@@ -17,13 +16,23 @@ export const OnePagerFAQ = ({
 }: OnePagerFAQProps) => {
   return(
     <ContentCard title='Frequently Asked Questions' isLoading={isLoading}>
+      {onePagerData.questions.map((question: OnePagerQuestion) => (
+        <Question key={question.question} question={question}></Question>
+      ))}
+    </ContentCard>
+  )
+}
+
+const Question = ({question}: {question: OnePagerQuestion}) => {
+  return (
+    <>
       <Heading as='h1' size='lg' marginRight='10px'>
-        Question 1
+        {question.question}
       </Heading>
       <SubHeading>
-        Answer 1
+        {question.answer}
       </SubHeading>
-    </ContentCard>
+    </>
   )
 }
 

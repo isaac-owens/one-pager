@@ -1,7 +1,7 @@
 import { OnePagerData, OnePagerPublicData } from '../model/model';
 import * as founders from './founders';
 import * as investors from './investors';
-import * as questions from './questions'
+import * as questions from './questions';
 
 /** An empty one pager, for initial React state */
 export const EMPTY_ONE_PAGER: OnePagerData = {
@@ -10,6 +10,7 @@ export const EMPTY_ONE_PAGER: OnePagerData = {
   industryTags: [],
   briefDescription: '',
   founders: [],
+  questions: [],
 };
 
 const facebook: OnePagerData = {
@@ -27,6 +28,7 @@ const facebook: OnePagerData = {
   founders: [founders.facebook1, founders.facebook2, founders.facebook3],
   pitchVideoLink: 'https://www.youtube.com/watch?v=WzgNAN3dW-I',
   investors: [investors.investor2],
+  questions: [questions.question1],
 };
 
 const lendingClub: OnePagerData = {
@@ -42,6 +44,7 @@ const lendingClub: OnePagerData = {
   fundraisingDetails: 'Expand capabilities and accelerate customer growth',
   founders: [founders.lendingClub1, founders.lendingClub2],
   investors: [investors.investor1],
+  questions: [questions.question1, questions.question2]
 };
 
 const spotify: OnePagerData = {
@@ -58,6 +61,7 @@ const spotify: OnePagerData = {
   founders: [founders.spotify1, founders.spotify2],
   pitchVideoLink: 'https://www.youtube.com/watch?v=ZDXETBfXSuc&t=166s',
   investors: [investors.investor1],
+  questions: [questions.question3]
 };
 
 const workday: OnePagerData = {
@@ -73,6 +77,7 @@ const workday: OnePagerData = {
   fundraisingDetails: 'Develop software platform',
   founders: [founders.workday1, founders.workday2],
   investors: [investors.investor1, investors.investor2],
+  questions: [questions.question3, questions.question4]
 };
 
 const zynga: OnePagerData = {
@@ -89,6 +94,7 @@ const zynga: OnePagerData = {
   founders: [founders.zynga1, founders.zynga2, founders.zynga3],
   pitchVideoLink: 'https://www.youtube.com/watch?v=HdVWHAPiqno',
   investors: [investors.investor1, investors.investor3],
+  questions: [questions.question4]
 };
 
 /** Map of urls to full one pager data. */
