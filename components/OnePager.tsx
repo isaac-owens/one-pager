@@ -48,14 +48,15 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 
       <OnePagerFinances onePagerData={onePagerData} isLoading={isLoading} />
 
-      <Diveder50 />
 
       {
-      onePagerData.pitchVideoLink ? "" : 
-      <OnePagerVideo onePagerData={onePagerData} isLoading={isLoading} />
+        onePagerData.pitchVideoLink ? "" :
+        <>
+          <Diveder50 />
+          
+          <OnePagerVideo onePagerData={onePagerData} isLoading={isLoading} />
+        </>
       }
-      
-      {/* <OnePagerVideo onePagerData={onePagerData} isLoading={isLoading} /> */}
 
       <Diveder50 />
 
