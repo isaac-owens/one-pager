@@ -48,12 +48,13 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 
       <OnePagerFinances onePagerData={onePagerData} isLoading={isLoading} />
 
-
+      
       {
+        // Check if video link exists
         onePagerData.pitchVideoLink ? "" :
         <>
           <Diveder50 />
-          
+
           <OnePagerVideo onePagerData={onePagerData} isLoading={isLoading} />
         </>
       }
