@@ -27,6 +27,8 @@ export const OnePagerFinances = ({
     return (raised / goal) * 100;
   }
 
+  const progress = calculateFundsRaised(onePagerData.fundsRaisedInStage, onePagerData.fundraisingStageGoal);
+
   return (
     <ContentCard title='Finances' isLoading={isLoading}>
       <Heading as='h1' size='lg' marginRight='10px'>
@@ -41,8 +43,7 @@ export const OnePagerFinances = ({
       <SubHeading>
         Funding Goal: {formatFinanceNumber(onePagerData.fundraisingStageGoal)}
       </SubHeading>
-      <Progress value={calculateFundsRaised(onePagerData.fundsRaisedInStage, onePagerData.fundraisingStageGoal)} />
-      
+      <Progress color={progress === 100 ? "green" : "red"} value={progress} />
     </ContentCard>
   );
 };
