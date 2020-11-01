@@ -27,11 +27,15 @@ export const OnePagerFinances = ({
         Funding Stage: {onePagerData.fundraisingStage}
       </Heading>
       <SubHeading>
+        Fundraising Details: {onePagerData.fundraisingDetails}
+      </SubHeading>
+      <SubHeading>
         Funds Raised: {formatFinanceNumber(onePagerData.fundsRaisedInStage)}
       </SubHeading>
       <SubHeading>
         Funding Goal: {formatFinanceNumber(onePagerData.fundraisingStageGoal)}
       </SubHeading>
+      
     </ContentCard>
   );
 };
