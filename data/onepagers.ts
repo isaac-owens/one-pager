@@ -1,6 +1,7 @@
 import { OnePagerData, OnePagerPublicData } from '../model/model';
 import * as founders from './founders';
 import * as investors from './investors';
+import * as questions from './questions'
 
 /** An empty one pager, for initial React state */
 export const EMPTY_ONE_PAGER: OnePagerData = {

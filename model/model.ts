@@ -28,3 +28,8 @@ export interface OnePagerData {
   pitchVideoLink?: string;
   investors?: OnePagerPerson[];
 }
+
+export interface OnePagerQuestion {
+  question: string;
+  answer: string;
+}
