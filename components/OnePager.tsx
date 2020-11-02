@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { withTracking } from 'react-tracker';
+
 import Head from 'next/head';
 import Link from 'next/link';
 import { Box, Flex, Divider } from '@chakra-ui/core';
@@ -14,8 +17,10 @@ import { OnePagerFinances } from './OnePagerFinances';
 import { OnePagerVideo } from './OnePagerVideo';
 import { OnePagerFAQ } from './OnePagerFAQ';
 
+const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
+
 /** Renders a full one pager based on the onePagerUrl. */
-export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
+const OnePager = ({ onePagerUrl }: { onePagerUrl: string }, props) => {
   const [onePagerData, setOnePager]: [OnePagerData, any] = React.useState(
     EMPTY_ONE_PAGER
   );
@@ -27,6 +32,8 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
     getOnePagerData(onePagerUrl).then((result) => {
       setOnePager(result);
       setIsLoading(false);
+      console.log(props);
+      // props.trackPageView(props.pageId);
     });
   }, []);
 
@@ -79,3 +86,8 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 };
 
 const Diveder50 = () => <Divider width='50%' />;
+
+const mapTrackingToProps = trackEvent => ({ trackPageView: (pageId) => trackEvent(pageViewEvent(pageId))});
+
+// export default OnePager;
+export default withTracking(mapTrackingToProps)(OnePager);
