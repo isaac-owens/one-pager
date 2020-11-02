@@ -21,7 +21,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
   );
   const [isLoading, setIsLoading]: [boolean, any] = React.useState(false);
 
-  // Load data on first render.
+  // Load data on first render. Similar to componentDidMount
   React.useEffect(() => {
     setIsLoading(true);
     getOnePagerData(onePagerUrl).then((result) => {
@@ -29,6 +29,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
       setIsLoading(false);
     });
   }, []);
+
 
   return (
     <Box bg='#f2f4f5'>
