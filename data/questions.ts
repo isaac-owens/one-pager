@@ -1,17 +1,17 @@
 import { OnePagerQuestion } from '../model/model';
 
 export const question1: OnePagerQuestion = {
-  question: '',
+  question: 'What holes do you have in your team and how do you plan to fill them?',
   answer: '',
 }
 
 export const question2: OnePagerQuestion = {
-  question: '',
+  question: 'Why do you care about this?',
   answer: '',
 }
 
 export const question3: OnePagerQuestion = {
-  question: '',
+  question: 'Have you invested your own money? If not, why not?',
   answer: '',
 }
 
