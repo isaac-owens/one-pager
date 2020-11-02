@@ -28,7 +28,7 @@ const saveDataToLocalStorage = (data) => {
 }
 
 /** Renders a full one pager based on the onePagerUrl. */
-const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string, trackPageView, onEvent }) => {
+export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
   const [onePagerData, setOnePager]: [OnePagerData, any] = React.useState(
     EMPTY_ONE_PAGER
   );
@@ -40,8 +40,6 @@ const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string
     getOnePagerData(onePagerUrl).then((result) => {
       setOnePager(result);
       setIsLoading(false);
-      trackPageView(onePagerUrl);
-      onEvent(onePagerUrl);
       saveDataToLocalStorage(onePagerUrl);
     });
   }, [onePagerUrl]);
@@ -95,8 +93,3 @@ const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string
 };
 
 const Diveder50 = () => <Divider width='50%' />;
-
-const mapTrackingToProps = trackEvent => ({ trackPageView: (pageId) => trackEvent(pageViewEvent(pageId))});
-
-// export default OnePager;
-export default withTracking(mapTrackingToProps)(OnePager);

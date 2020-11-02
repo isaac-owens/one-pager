@@ -1,17 +1,16 @@
 import React from 'react';
 import { ONE_PAGERS_PUBLIC_DATA_ARRAY } from '../data/onepagers';
-import OnePager from '../components/OnePager';
+import { OnePager } from '../components/OnePager';
 import { OnePagerPublicData } from '../model/model';
 
 type OnePagerPageData = {
   onePagerUrl: string;
-  onEvent;
 };
 
 /** Render a One Pager Page. */
-export default function OnePagerPage({ onePagerUrl, onEvent }: OnePagerPageData) {
+export default function OnePagerPage( { onePagerUrl }: OnePagerPageData) {
 
-  return <OnePager onePagerUrl={onePagerUrl} onEvent={onEvent}></OnePager>;
+  return <OnePager onePagerUrl={onePagerUrl}></OnePager>;
 }
 
 export async function getStaticPaths() {
