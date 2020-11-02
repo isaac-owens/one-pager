@@ -17,10 +17,11 @@ import { OnePagerFinances } from './OnePagerFinances';
 import { OnePagerVideo } from './OnePagerVideo';
 import { OnePagerFAQ } from './OnePagerFAQ';
 
+// Returns page view event object
 const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
 
 /** Renders a full one pager based on the onePagerUrl. */
-const OnePager = ({ onePagerUrl }: { onePagerUrl: string }, props) => {
+const OnePager = ({ onePagerUrl, trackPageView }: { onePagerUrl: string, trackPageView }) => {
   const [onePagerData, setOnePager]: [OnePagerData, any] = React.useState(
     EMPTY_ONE_PAGER
   );
@@ -32,8 +33,7 @@ const OnePager = ({ onePagerUrl }: { onePagerUrl: string }, props) => {
     getOnePagerData(onePagerUrl).then((result) => {
       setOnePager(result);
       setIsLoading(false);
-      console.log(props);
-      // props.trackPageView(props.pageId);
+      trackPageView(onePagerUrl);
     });
   }, []);
 
