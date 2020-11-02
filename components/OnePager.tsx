@@ -21,7 +21,7 @@ import { OnePagerFAQ } from './OnePagerFAQ';
 const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
 
 /** Renders a full one pager based on the onePagerUrl. */
-const OnePager = ({ onePagerUrl, trackPageView }: { onePagerUrl: string, trackPageView }) => {
+const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string, trackPageView, onEvent }) => {
   const [onePagerData, setOnePager]: [OnePagerData, any] = React.useState(
     EMPTY_ONE_PAGER
   );
@@ -34,6 +34,7 @@ const OnePager = ({ onePagerUrl, trackPageView }: { onePagerUrl: string, trackPa
       setOnePager(result);
       setIsLoading(false);
       trackPageView(onePagerUrl);
+      onEvent(onePagerUrl)
     });
   }, []);
 
