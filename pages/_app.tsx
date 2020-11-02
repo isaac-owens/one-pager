@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   const pageViewListener = (event, trackingHistory) => {
-    console.log(event);
+    console.log('listener trying');
   };
   
   tracker.on('PAGE_VIEW', pageViewListener);

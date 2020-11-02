@@ -20,6 +20,13 @@ import { OnePagerFAQ } from './OnePagerFAQ';
 // Returns page view event object
 const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
 
+const saveDataToLocalStorage = (data) => {
+  let a = [];
+  a = JSON.parse(localStorage.getItem('visitedPages')) || [];
+  a.push(data);
+  localStorage.setItem('visitedPages', JSON.stringify(a));
+}
+
 /** Renders a full one pager based on the onePagerUrl. */
 const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string, trackPageView, onEvent }) => {
   const [onePagerData, setOnePager]: [OnePagerData, any] = React.useState(
@@ -34,9 +41,10 @@ const OnePager = ({ onePagerUrl, trackPageView, onEvent }: { onePagerUrl: string
       setOnePager(result);
       setIsLoading(false);
       trackPageView(onePagerUrl);
-      onEvent(onePagerUrl)
+      onEvent(onePagerUrl);
+      saveDataToLocalStorage(onePagerUrl);
     });
-  }, []);
+  }, [onePagerUrl]);
 
 
   return (
