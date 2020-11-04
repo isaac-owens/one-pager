@@ -17,7 +17,6 @@ import { OnePagerFAQ } from './OnePagerFAQ';
 import { Paywall } from './Paywall';
 
 let visitedPages = [];
-let subscribed = false;
 
 const saveDataToLocalStorage = (data) => {
   let a = [];
