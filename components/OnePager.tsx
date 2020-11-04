@@ -16,6 +16,7 @@ import { OnePagerVideo } from './OnePagerVideo';
 import { OnePagerFAQ } from './OnePagerFAQ';
 
 let visitedPages = [];
+let subscribed = false;
 
 const saveDataToLocalStorage = (data) => {
   let a = [];
