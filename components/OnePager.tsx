@@ -19,24 +19,24 @@ import { Paywall } from './Paywall';
 let visitedPages = [];
 let subscribed;
 
+// Persists an array of visited pages to localStorage
 const saveDataToLocalStorage = (data) => {
   let a = [];
   a = JSON.parse(localStorage.getItem('visitedPages')) || [];
+  // Ensures the same page is not pushed multiple times
   if (!a.includes(data)) {
     a.push(data);
   };
   localStorage.setItem('visitedPages', JSON.stringify(a));
 }
 
-const showPaywall = (data) => {
+const showPaywall = () => {
   if (subscribed) {
     return false
   }
 
-  if (visitedPages.length > 2 && !visitedPages.slice(0, 2).includes(data)) {
-    return true;
-  }
-  return false;
+  // Checks for third page view 
+  return visitedPages.length > 2 ? true : false;
 }
 
 /** Renders a full one pager based on the onePagerUrl. */
@@ -61,12 +61,15 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 
   return (
     <Box bg='#f2f4f5'>
+
+      {/* Conditionally renders paywall modal */}
       {showPaywall(onePagerUrl) ? 
-      <Paywall />: 
+      <Paywall />: ""}
+
       <Head>
         <title>{isLoading ? onePagerUrl : onePagerData.companyName}</title>
         <link rel='icon' href='/favicon.png' />
-      </Head>}
+      </Head>
 
 
       <Header />

@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from "@chakra-ui/core";
 
 export const Paywall = () => {
+
+  // Callback function for subscribe button click
   const subscribeAndClose = () => {
     localStorage.setItem('subscribed', 'true');
     const modal = document.querySelector('#modal');
@@ -18,11 +20,7 @@ export const Paywall = () => {
           Looks like you've reached your limit of OnePager views. In order to keep viewing OnePagers you will have to subscribe. Don't worry, it's as easy as the click of a button!
         </p>
 
-        <Button variantColor='green' onClick={subscribeAndClose}>Subscribe</Button>
-
-        {/* <button id="close" title="Close" className="close_modal" onClick={closeModal}>
-           &#10005;
-        </button> */}
+        <Button variantColor='green' onClick={subscribeAndClose}>Subscribe!</Button>
       </div>
      </div>
    );
