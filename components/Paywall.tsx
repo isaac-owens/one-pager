@@ -4,6 +4,7 @@ import { Button } from "@chakra-ui/core";
 export const Paywall = () => {
   const subscribeAndClose = () => {
     const modal = document.querySelector('#modal');
+    
     modal.style.display = 'none';
   }
 
