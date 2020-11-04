@@ -23,7 +23,9 @@ const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
 const saveDataToLocalStorage = (data) => {
   let a = [];
   a = JSON.parse(localStorage.getItem('visitedPages')) || [];
-  a.push(data);
+  if (!a.includes(data)) {
+    a.push(data);
+  };
   localStorage.setItem('visitedPages', JSON.stringify(a));
 }
 
