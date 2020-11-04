@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withTracking } from 'react-tracker';
-
 import Head from 'next/head';
 import Link from 'next/link';
 import { Box, Flex, Divider } from '@chakra-ui/core';
@@ -19,6 +17,8 @@ import { OnePagerFAQ } from './OnePagerFAQ';
 
 // Returns page view event object
 const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
+
+let visitedPages = [];
 
 const saveDataToLocalStorage = (data) => {
   let a = [];
@@ -38,21 +38,25 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 
   // Load data on first render. Similar to componentDidMount
   React.useEffect(() => {
+    saveDataToLocalStorage(onePagerUrl);
+    visitedPages = JSON.parse(localStorage.getItem('visitedPages'));
     setIsLoading(true);
     getOnePagerData(onePagerUrl).then((result) => {
       setOnePager(result);
       setIsLoading(false);
-      saveDataToLocalStorage(onePagerUrl);
     });
   }, [onePagerUrl]);
 
 
   return (
     <Box bg='#f2f4f5'>
+      {visitedPages.length > 2 ? 
+      <h1>Paywall</h1> : 
       <Head>
         <title>{isLoading ? onePagerUrl : onePagerData.companyName}</title>
         <link rel='icon' href='/favicon.png' />
-      </Head>
+      </Head>}
+
 
       <Header />
 
