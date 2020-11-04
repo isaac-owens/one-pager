@@ -63,7 +63,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
     <Box bg='#f2f4f5'>
 
       {/* Conditionally renders paywall modal */}
-      {showPaywall(onePagerUrl) ? 
+      {showPaywall() ? 
       <Paywall />: ""}
 
       <Head>
