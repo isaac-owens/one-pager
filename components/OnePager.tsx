@@ -17,6 +17,7 @@ import { OnePagerFAQ } from './OnePagerFAQ';
 import { Paywall } from './Paywall';
 
 let visitedPages = [];
+let subscribed;
 
 const saveDataToLocalStorage = (data) => {
   let a = [];
@@ -28,6 +29,10 @@ const saveDataToLocalStorage = (data) => {
 }
 
 const showPaywall = (data) => {
+  if (subscribed) {
+    return false
+  }
+
   if (visitedPages.length > 2 && !visitedPages.slice(0, 2).includes(data)) {
     return true;
   }
@@ -45,6 +50,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
   React.useEffect(() => {
     saveDataToLocalStorage(onePagerUrl);
     visitedPages = JSON.parse(localStorage.getItem('visitedPages'));
+    subscribed = localStorage.getItem('subscribed');
     setIsLoading(true);
     getOnePagerData(onePagerUrl).then((result) => {
       setOnePager(result);
