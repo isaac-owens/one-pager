@@ -14,6 +14,7 @@ import { OnePagerFounders } from './OnePagerFounders';
 import { OnePagerFinances } from './OnePagerFinances';
 import { OnePagerVideo } from './OnePagerVideo';
 import { OnePagerFAQ } from './OnePagerFAQ';
+import { Paywall } from './Paywall';
 
 let visitedPages = [];
 let subscribed = false;
@@ -56,7 +57,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
   return (
     <Box bg='#f2f4f5'>
       {showPaywall(onePagerUrl) ? 
-      <h1>Paywall</h1> : 
+      <Paywall />: 
       <Head>
         <title>{isLoading ? onePagerUrl : onePagerData.companyName}</title>
         <link rel='icon' href='/favicon.png' />
