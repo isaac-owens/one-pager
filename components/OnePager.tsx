@@ -15,9 +15,6 @@ import { OnePagerFinances } from './OnePagerFinances';
 import { OnePagerVideo } from './OnePagerVideo';
 import { OnePagerFAQ } from './OnePagerFAQ';
 
-// Returns page view event object
-const pageViewEvent = (pageId) => ({ type: 'PAGE_VIEW', data: pageId });
-
 let visitedPages = [];
 
 const saveDataToLocalStorage = (data) => {
@@ -27,6 +24,13 @@ const saveDataToLocalStorage = (data) => {
     a.push(data);
   };
   localStorage.setItem('visitedPages', JSON.stringify(a));
+}
+
+const showPaywall = (data) => {
+  if (visitedPages.length > 2 && !visitedPages.slice(0, 2).includes(data)) {
+    return true;
+  }
+  return false;
 }
 
 /** Renders a full one pager based on the onePagerUrl. */
@@ -50,7 +54,7 @@ export const OnePager = ({ onePagerUrl }: { onePagerUrl: string }) => {
 
   return (
     <Box bg='#f2f4f5'>
-      {visitedPages.length > 2 ? 
+      {showPaywall(onePagerUrl) ? 
       <h1>Paywall</h1> : 
       <Head>
         <title>{isLoading ? onePagerUrl : onePagerData.companyName}</title>
